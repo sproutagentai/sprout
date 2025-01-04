@@ -22,4 +22,4 @@ def get_weather(location: str, celsius: Optional[bool] = False) -> str:
 
 agent = ToolCallingAgent(tools=[get_weather], model=model)
 
-print(agent.run("What's the weather like in Paris?"))
+print(agent.run("What's the weather like in London?"))
