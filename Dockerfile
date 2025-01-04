@@ -21,9 +21,12 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Install the package
 RUN pip install -e .
 
+
 COPY server.py /app/server.py
+
 
 # Expose the port your server will run on
 EXPOSE 65432
+
 
 CMD ["python", "/app/server.py"]
