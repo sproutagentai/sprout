@@ -1,41 +1,38 @@
-<<<<<<< HEAD
-# prime
-Prime: a solana python library for creating new agents. Agents write python code to call tools or orchestrate other agents.
-=======
-<!---
-Copyright 2024 The HuggingFace Team. All rights reserved.
+# Prime Engine - Solana AI Agents Creating Framework
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+Prime is a powerful, modular, and highly extensible framework designed for developers building applications that require a seamless blend of performance, flexibility, and scalability. With Prime, you can harness the power of modern tools to craft cutting-edge solutions across industries.
 
-    http://www.apache.org/licenses/LICENSE-2.0
+---
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
--->
+## Contract Address and Development Funding
+This project is powered by a single, official smart contract address. Please ensure that you interact only with the following address to avoid fraud or misrepresentation:
 
-<h3 align="center">
-  <p> Prime - First Solana Python Library To Build Great Agents!</p>
-</h3>
+Contract Address:
+`00000000000000000000000000000`
 
-`prime` is a library that enables you to run powerful agents in a few lines of code. It offers:
+All development and maintenance of this project are funded exclusively through the creator's wallet associated with the token.
 
-✨ **Simplicity**: the logic for agents fits in ~thousand lines of code (see agents.py. We kept abstractions to their minimal shape above raw code!
+## Key Features
 
-🧑‍💻 **First-class support for Code Agents**, i.e. agents that write their actions in code (as opposed to "agents being used to write code"). To make it secure, we support executing in sandboxed environments via [E2B](https://e2b.dev/).
- - On top of this `CodeAgent` class, we still support the standard `ToolCallingAgent`
+### 🚀 High Performance
+Prime is optimized for speed and efficiency, ensuring your applications run smoothly even under heavy workloads.
 
-🤗 **Hub integrations**: you can share and load tools to/from the Hub, and more is to come!
+### ⚙️ Modularity
+With a modular design, Prime allows you to integrate only the components you need, keeping your applications lightweight and focused.
 
-🌐 **Support for any LLM**: it supports models hosted on the Hub loaded in their `transformers` version or through our inference API, but also supports models from OpenAI, Anthropic and many others via our [LiteLLM](https://www.litellm.ai/) integration.
+### 📈 Scalability
+Whether you're starting small or building enterprise-grade solutions, Prime adapts to your needs, growing with your application.
 
-## Quick demo
+### 🔒 Security First
+Built with security in mind, Prime provides robust tools to safeguard your application and its users.
 
-First install the package.
+### 🧩 Extensibility
+Easily customize and expand Prime's functionality with plugins, libraries, and APIs tailored to your project's needs.
+
+
+## Getting Started
+
+First install the package via PyPi.
 ```bash
 pip install prime-agents-py
 ```
@@ -49,28 +46,16 @@ agent.run("Tell me Solana and Bitcoin price in March 2025")
 ```
 
 
-## Code agents?
+## Contributing
+We welcome contributions! If you want to report a bug, suggest a feature, or contribute code, please:
 
-In our `CodeAgent`,  the LLM engine writes its actions in code. This approach is demonstrated to work better than the current industry practice of letting the LLM output a dictionary of the tools it wants to calls: [uses 30% fewer steps](https://huggingface.co/papers/2402.01030) (thus 30% fewer LLM calls)
-and [reaches higher performance on difficult benchmarks](https://huggingface.co/papers/2411.01747).
-
-Especially, since code execution can be a security concern (arbitrary code execution!), we provide options at runtime:
-  - a secure python interpreter to run code more safely in your environment
-  - a sandboxed environment using [E2B](https://e2b.dev/).
-
-## How smol is it really?
-
-We strived to keep abstractions to a strict minimum: the main code in `agents.py` is only ~1,000 lines of code.
-Still, we implement several types of agents: `CodeAgent` writes its actions as Python code snippets, and the more classic `ToolCallingAgent` leverages built-in tool calling methods.
-
-By the way, why use a framework at all? Well, because a big part of this stuff is non-trivial. For instance, the code agent has to keep a consistent format for code throughout its system prompt, its parser, the execution. So our framework handles this complexity for you. But of course we still encourage you to hack into the source code and use only the bits that you need, to the exclusion of everything else!
+1. Fork the repository.
+2. Create a new branch for your feature or bugfix.
+3. Submit a pull request.
 
 ## How strong are open models for agentic workflows?
 
 We've created `CodeAgent` instances with some leading models, and compared them on [this benchmark](https://huggingface.co/datasets/m-ric/agents_medium_benchmark_2) that gathers questions from a few different benchmarks to propose a varied blend of challenges.
-
-
-This comparison shows that open source models can now take on the best closed models!
 
 ## Citing prime
 
