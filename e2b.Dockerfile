@@ -2,4 +2,4 @@
 FROM e2bdev/code-interpreter:latest 
 
 # Install dependencies and customize sandbox
-RUN pip install git+https://github.com/huggingface/prime.git
+RUN pip install git+https://github.com/primengine/prime.git
