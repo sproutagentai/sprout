@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "prime-agents-py"
-version = "0.1.3"
+version = "0.1.4"
 description = "Prime is a powerful, modular, and highly extensible framework designed for developers building applications that require a seamless blend of performance, flexibility, and scalability. With Prime, you can harness the power of modern tools to craft cutting-edge solutions across industries."
 authors = [
   { name="primengine inc", email="support@primengine.ai" }, { name="Prime Inc"},

@@ -2,7 +2,9 @@ from prime import Tool, CodeAgent, HfApiModel
 from prime.default_tools import VisitWebpageTool
 from dotenv import load_dotenv
 
+
 load_dotenv()
+
 
 class GetCatImageTool(Tool):
     name="get_cat_image"

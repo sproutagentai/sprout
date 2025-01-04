@@ -12,6 +12,11 @@ Contract Address:
 
 All development and maintenance of this project are funded exclusively through the creator's wallet associated with the token.
 
+## Why PRIME?
+- Developer-Centric: Designed with developers in mind, PRIME simplifies complex processes and accelerates development.
+- Open-Source: Fully open-source, ensuring transparency and community-driven growth.
+- Adaptable: Built to accommodate a wide range of industries and applications, from startups to enterprises.
+
 ## Key Features
 
 ### 🚀 High Performance
