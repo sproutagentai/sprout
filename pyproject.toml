@@ -4,10 +4,10 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "prime-agents-py"
-version = "1.1.0.dev0"
-description = "Prime: a barebones library for agents. Agents write python code to call tools or orchestrate other agents."
+version = "0.1.0"
+description = "Prime is a powerful, modular, and highly extensible framework designed for developers building applications that require a seamless blend of performance, flexibility, and scalability. With Prime, you can harness the power of modern tools to craft cutting-edge solutions across industries."
 authors = [
-  { name="Aymeric Roucher", email="aymeric@hf.co" }, { name="Thomas Wolf"},
+  { name="primengine inc", email="support@primengine.ai" }, { name="Prime Inc"},
 ]
 readme = "README.md"
 requires-python = ">=3.10"
