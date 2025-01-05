@@ -1,81 +1,468 @@
-# Prime Engine - Solana AI Agents Creating Framework
+# Sprout AI (based on Prime Engine)
 
-Prime is a powerful, modular, and highly extensible framework designed for developers building applications that require a seamless blend of performance, flexibility, and scalability. With Prime, you can harness the power of modern tools to craft cutting-edge solutions across industries.
+## 🪙 Token Operations
+Effortlessly manage SOL and SPL tokens:
+Transfer SOL and SPL tokens
+Check token balances
+Stake SOL for rewards
+Deploy and manage new tokens
+Request faucet funds for test environments
+Burn tokens and close accounts (individually or in batches)
 
----
+## 💱 Trading
+Trade efficiently with integrated Jupiter Exchange support:
+Perform token swaps with customizable slippage
+Access direct routing options
+Buy and sell tokens using Raydium liquidity pools
 
-## Contract Address and Development Funding
-This project is powered by a single, official smart contract address. Please ensure that you interact only with the following address to avoid fraud or misrepresentation:
+## 🏦 Yield Farming
+Maximize returns on idle assets by lending with Lulo.
 
-## Contract Address $PRIME:
-`pr1Me7tWgYawfbZMLQDxoL7bD6KhyBYctp72rEengmW`
+## 🔗 LangChain Integration
+Leverage advanced tools from LangChain to streamline blockchain interactions:
+Check balances, transfer tokens, deploy new tokens, and more
 
-## DEX: https://dexscreener.com/solana/pr1Me7tWgYawfbZMLQDxoL7bD6KhyBYctp72rEengmW
-## WEB: https://primengine.ai/
-## X: https://x.com/primengineai
-## TG: https://t.me/primengineai
+## 📈 Performance Tracking
+Stay informed with real-time data:
+Fetch current Transactions Per Second (TPS) on the Solana network
 
-All development and maintenance of this project are funded exclusively through the creator's wallet associated with the token.
+## 📊 Token Insights
+Access in-depth token information:
+Retrieve token data by ticker
+Fetch token data by address
+## 🚀 Pump & Fun Tokens
+Create customizable Pump & Fun tokens to engage your audience or community.
 
-## Why PRIME?
-- Developer-Centric: Designed with developers in mind, PRIME simplifies complex processes and accelerates development.
-- Open-Source: Fully open-source, ensuring transparency and community-driven growth.
-- Adaptable: Built to accommodate a wide range of industries and applications, from startups to enterprises.
-
-## Key Features
-
-### 🚀 High Performance
-Prime is optimized for speed and efficiency, ensuring your applications run smoothly even under heavy workloads.
-
-### ⚙️ Modularity
-With a modular design, Prime allows you to integrate only the components you need, keeping your applications lightweight and focused.
-
-### 📈 Scalability
-Whether you're starting small or building enterprise-grade solutions, Prime adapts to your needs, growing with your application.
-
-### 🔒 Security First
-Built with security in mind, Prime provides robust tools to safeguard your application and its users.
-
-### 🧩 Extensibility
-Easily customize and expand Prime's functionality with plugins, libraries, and APIs tailored to your project's needs.
+## 🏦 Meteora DLMM Pools
+Set up dynamic liquidity pools with Meteora, tailored to your configurations
 
 
-## Getting Started
+## Installation
 
-First install the package via PyPi.
 ```bash
-pip install prime-agents-py
-```
-Then define your agent, give it the tools it needs and run it!
-```py
-from prime import CodeAgent, DuckDuckGoSearchTool, HfApiModel
-
-agent = CodeAgent(tools=[DuckDuckGoSearchTool()], model=HfApiModel())
-
-agent.run("Tell me Solana and Bitcoin price in March 2025")
+pip install sprout
 ```
 
+## Quick Start
+
+```python
+from sprout import SolanaAgentKit, create_solana_tools
+
+# Initialize with private key and optional RPC URL
+agent = SolanaAgentKit(
+    "your-wallet-private-key-as-base58",
+    "https://api.mainnet-beta.solana.com",
+    "your-openai-api-key"
+)
+
+# Create LangChain tools
+tools = create_solana_tools(agent)
+```
+
+## Usage Examples
+
+### Fetch price of a token
+
+```python
+from sprout import SolanaAgentKit
+
+async def main():
+agent = SolanaAgentKit(
+    "your-wallet-private-key-as-base58",
+    "https://api.mainnet-beta.solana.com",
+    "your-openai-api-key"
+)
+
+    # Get balance
+    balance =  await agent.fetch_price("FKMKctiJnbZKL16pCmR7ig6bvjcMJffuUMjB97YD7LJs")
+    print(f"Price: {balance} SOL")
+
+# Run the async function
+import asyncio
+asyncio.run(main())
+
+```
+
+### Swap Tokens
+
+```python
+from sprout import SolanaAgentKit
+
+from solders.pubkey import Pubkey
+
+async def main():
+agent = SolanaAgentKit(
+    "your-wallet-private-key-as-base58",
+    "https://api.mainnet-beta.solana.com",
+    "your-openai-api-key"
+)
+
+signature = await agent.trade(
+    agent,
+    output_mint=Pubkey.from_string("target-token-mint"),
+    input_amount=100,  # amount
+    input_mint=Pubkey.from_string("source-token-mint"),
+    slippage_bps=300  # 3% slippage
+)
+
+import asyncio
+asyncio.run(main())
+```
+
+### Lend Tokens
+
+```python
+from sprout import SolanaAgentKit
+
+from solders.pubkey import Pubkey
+
+async def main():
+agent = SolanaAgentKit(
+    "your-wallet-private-key-as-base58",
+    "https://api.mainnet-beta.solana.com",
+    "your-openai-api-key"
+)
+signature = await agent.lend_assets(
+    amount=100  # amount
+)
+
+import asyncio
+asyncio.run(main())
+```
+
+### Stake SOL
+
+```python
+from sprout import SolanaAgentKit
+
+from solders.pubkey import Pubkey
+
+async def main():
+agent = SolanaAgentKit(
+    "your-wallet-private-key-as-base58",
+    "https://api.mainnet-beta.solana.com",
+    "your-openai-api-key"
+)
+
+signature = await agent.stake(
+    amount=1  # amount in SOL
+)
+
+import asyncio
+asyncio.run(main())
+```
+
+### Request Faucet Funds
+
+```python
+from sprout import SolanaAgentKit
+
+async def main():
+    agent = SolanaAgentKit(
+        "your-wallet-private-key-as-base58",
+        "https://api.mainnet-beta.solana.com",
+        "your-openai-api-key"
+    )
+
+    response = await agent.request_faucet_funds()
+    print(response)
+
+import asyncio
+asyncio.run(main())
+```
+
+### Fetch Current TPS
+
+```python
+from sprout import SolanaAgentKit
+
+async def main():
+    agent = SolanaAgentKit(
+        "your-wallet-private-key-as-base58",
+        "https://api.mainnet-beta.solana.com",
+        "your-openai-api-key"
+    )
+
+    tps = await agent.get_tps()
+    print(f"Current TPS: {tps}")
+
+import asyncio
+asyncio.run(main())
+```
+
+### Get Token Data by Ticker
+
+```python
+from sprout import SolanaAgentKit
+
+async def main():
+    agent = SolanaAgentKit(
+        "your-wallet-private-key-as-base58",
+        "https://api.mainnet-beta.solana.com",
+        "your-openai-api-key"
+    )
+
+    token_data = await agent.get_token_data_by_ticker("SOL")
+    print(token_data)
+
+import asyncio
+asyncio.run(main())
+```
+
+### Get Token Data by Address
+
+```python
+from sprout import SolanaAgentKit
+from solders.pubkey import Pubkey
+
+async def main():
+    agent = SolanaAgentKit(
+        "your-wallet-private-key-as-base58",
+        "https://api.mainnet-beta.solana.com",
+        "your-openai-api-key"
+    )
+
+    token_data = await agent.get_token_data_by_address("your-token-mint-address")
+    print(token_data)
+
+import asyncio
+asyncio.run(main())
+```
+
+### Launch Pump Fun Token
+
+```python
+from sprout import SolanaAgentKit
+from sprout.types import PumpfunTokenOptions
+
+async def main():
+    agent = SolanaAgentKit(
+        "your-wallet-private-key-as-base58",
+        "https://api.mainnet-beta.solana.com",
+        "your-openai-api-key"
+    )
+
+    options = PumpfunTokenOptions(
+        # Add your options here
+    )
+
+    response = await agent.launch_pump_fun_token(
+        token_name="MyToken",
+        token_ticker="MTK",
+        description="This is a fun token",
+        image_url="https://example.com/image.png",
+        options=options
+    )
+    print(response)
+```
+
+### Create Meteora DLMM Pool
+
+```python
+from sprout import SolanaAgentKit
+from solders.pubkey import Pubkey
+from sprout.utils.meteora_dlmm.types import ActivationType
+
+async def main():
+    agent = SolanaAgentKit(
+        "your-wallet-private-key-as-base58",
+        "https://api.mainnet-beta.solana.com",
+        "your-openai-api-key"
+    )
+
+    response = await agent.create_meteora_dlmm_pool(
+        bin_step=1,
+        token_a_mint=Pubkey.from_string("token-a-mint"),
+        token_b_mint=Pubkey.from_string("token-b-mint"),
+        initial_price=1.0,
+        price_rounding_up=True,
+        fee_bps=30,
+        activation_type=ActivationType.Timestamp,
+        has_alpha_vault=True,
+        activation_point=None
+    )
+    print(response)
+
+import asyncio
+asyncio.run(main())
+```
+
+### Buy Tokens with Raydium
+
+```python
+from sprout import SolanaAgentKit
+from solders.pubkey import Pubkey
+
+async def main():
+    agent = SolanaAgentKit(
+        "your-wallet-private-key-as-base58",
+        "https://api.mainnet-beta.solana.com",
+        "your-openai-api-key"
+    )
+
+    confirmed = await agent.buy_with_raydium(
+        pair_address=Pubkey.from_string("target-pair-address"),  # The pair you want to buy from
+        sol_in=1,  # Amount of SOL or input token to spend
+        slippage=300  # Maximum slippage in basis points (3% here)
+    )
+    print(f"Transaction confirmed: {confirmed}")
+
+import asyncio
+asyncio.run(main())
+```
+
+### Sell Tokens with Raydium
+
+```python
+from sprout import SolanaAgentKit
+from solders.pubkey import Pubkey
+
+async def main():
+    agent = SolanaAgentKit(
+        "your-wallet-private-key-as-base58",
+        "https://api.mainnet-beta.solana.com",
+        "your-openai-api-key"
+    )
+
+    confirmed = await agent.sell_with_raydium(
+        input_mint=Pubkey.from_string("source-token-mint"),  # The token you want to sell
+        percentage=100,
+        slippage_bps=250  # Maximum slippage in basis points (2.5% here)
+    )
+    print(f"Transaction confirmed: {confirmed}")
+
+import asyncio
+asyncio.run(main())
+```
+
+### Burn and Close Token Account
+
+```python
+from sprout import SolanaAgentKit
+
+async def main():
+    agent = SolanaAgentKit(
+        "your-wallet-private-key-as-base58",
+        "https://api.mainnet-beta.solana.com",
+        "your-openai-api-key"
+    )
+
+    response = await agent.burn_and_close_accounts("token-account-address")
+    print("Account burned and closed:", response)
+
+import asyncio
+asyncio.run(main())
+```
+
+### Batch burn and Close Token Account
+
+```python
+from sprout import SolanaAgentKit
+
+async def main():
+    agent = SolanaAgentKit(
+        "your-wallet-private-key-as-base58",
+        "https://api.mainnet-beta.solana.com",
+        "your-openai-api-key"
+    )
+
+    token_accounts = ["token-account-address-1", "token-account-address-2"]
+    responses = await agent.multiple_burn_and_close_accounts(token_accounts)
+    print("Accounts burned and closed:", responses)
+
+import asyncio
+asyncio.run(main())
+```
+
+## API Reference
+
+### Core Functions
+
+#### `transfer(agent, to, amount, mint?)`
+
+Transfer SOL or SPL tokens to a recipient.
+
+#### `trade(agent, output_mint, input_amount, input_mint?, slippage_bps?)`
+
+Swap tokens using Jupiter Exchange integration.
+
+#### `get_balance(agent, token_address)`
+
+Check SOL or token balance for the agent's wallet.
+
+#### `lend_asset(agent, asset_mint, amount)`
+
+Lend idle assets to earn interest with Lulo.
+
+#### `stake(agent, amount)`
+
+Stake SOL with Jupiter to earn rewards.
+
+#### `request_faucet_funds(agent)`
+
+Request faucet funds for testing purposes.
+
+#### `deploy_token(agent, decimals)`
+
+Deploy a new token with specified decimals.
+
+#### `fetch_price(agent, token_id)`
+
+Fetch the price of a token.
+
+#### `get_tps(agent)`
+
+Fetch the current transactions per second (TPS) on the Solana network.
+
+#### `get_token_data_by_ticker(agent, ticker)`
+
+Get token data by ticker.
+
+#### `get_token_data_by_address(agent, mint)`
+
+Get token data by address.
+
+#### `launch_pump_fun_token(agent, token_name, token_ticker, description, image_url, options)`
+
+Launch a Pump & Fun token with customizable options.
+
+#### `create_meteora_dlmm_pool(agent, bin_step, token_a_mint, token_b_mint, initial_price, price_rounding_up, fee_bps, activation_type, has_alpha_vault, activation_point)`
+
+Create a Meteora DLMM pool with various configurations.
+
+#### `buy_with_raydium(agent, pair_address, sol_in, slippage)`
+
+Buy tokens from Raydium liquidity pools.
+
+#### `sell_with_raydium(agent, pair_address, percentage, slippage)`
+
+Sell tokens using Raydium liquidity pools.
+
+#### `burn_and_close_accounts(agent, token_account)`
+
+Burns and closes token account.
+
+#### `multiple_burn_and_close_accounts(agent, token_accounts)`
+
+Burns and closes multiple token accounts.
+
+## Dependencies
+
+The toolkit relies on several key Solana and Metaplex libraries:
+
+- solana-py
+- spl-token-py
 
 ## Contributing
-We welcome contributions! If you want to report a bug, suggest a feature, or contribute code, please:
 
-1. Fork the repository.
-2. Create a new branch for your feature or bugfix.
-3. Submit a pull request.
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-## How strong are open models for agentic workflows?
+## License
 
-We've created `CodeAgent` instances with some leading models, and compared them on [this benchmark](https://huggingface.co/datasets/m-ric/agents_medium_benchmark_2) that gathers questions from a few different benchmarks to propose a varied blend of challenges.
+ISC License
 
-## Citing prime
+## Security
 
-If you use `prime` in your publication, please cite it by using the following BibTeX entry.
-
-```bibtex
-@Misc{prime,
-  title =        {`prime`: The easiest way to build efficient solana agentic systems.},
-  author =       {primengine inc.},
-  howpublished = {\url{https://github.com/primengine/prime}},
-  year =         {2025}
-}
-```
+This toolkit handles private keys and transactions. Always ensure you're using it in a secure environment and never share your private keys.
+#   s p r o u t a i  
+ 
