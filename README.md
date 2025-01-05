@@ -7,8 +7,13 @@ Prime is a powerful, modular, and highly extensible framework designed for devel
 ## Contract Address and Development Funding
 This project is powered by a single, official smart contract address. Please ensure that you interact only with the following address to avoid fraud or misrepresentation:
 
-Contract Address:
-`00000000000000000000000000000`
+## Contract Address $PRIME:
+`pr1Me7tWgYawfbZMLQDxoL7bD6KhyBYctp72rEengmW`
+
+## DEX: https://dexscreener.com/solana/pr1Me7tWgYawfbZMLQDxoL7bD6KhyBYctp72rEengmW
+## WEB: https://primengine.ai/
+## X: https://x.com/primengineai
+## TG: https://t.me/primengineai
 
 All development and maintenance of this project are funded exclusively through the creator's wallet associated with the token.
 
